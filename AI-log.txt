@@ -1,0 +1,55 @@
+How to run the mobile app (quick guide)
+1) Prerequisites (install if needed)
+    - Git
+    - For React Native / Expo: Node.js (>=14), npm or yarn, Android Studio (Android SDK). For iOS: Xcode.
+    - For Flutter: Flutter SDK, Android Studio, Xcode (macOS).
+    - Ensure an Android emulator or physical device is available; for iOS use Simulator or device.
+
+2) Clone the repository
+    git clone <REPO_URL> my-mobile-app
+    cd my-mobile-app
+
+3) Common workflows
+
+React Native (bare)
+    # install deps
+    npm install   # or: yarn
+    # start metro
+    npx react-native start
+    # in a new terminal:
+    npx react-native run-android   # Android
+    npx react-native run-ios       # macOS + Xcode for iOS
+
+Expo (managed)
+    npm install -g expo-cli        # if not installed
+    npm install                    # or: yarn
+    expo start
+    # Use Expo app on device or emulator (scan QR or press a / i)
+
+Flutter
+    flutter pub get
+    # run on connected device or emulator
+    flutter run
+    # target specific device:
+    flutter devices
+    flutter run -d <device_id>
+
+Native Android (Gradle)
+    ./gradlew assembleDebug
+    # then install:
+    adb install -r app/build/outputs/apk/debug/app-debug.apk
+    # or open project in Android Studio and Run
+
+Native iOS
+    open ios/YourProject.xcworkspace
+    # build & run from Xcode (select a simulator or device)
+
+4) Troubleshooting
+    - Read project README.md for project-specific steps and environment variables.
+    - If build fails, install missing SDKs, accept Android SDK licenses, or run `flutter doctor` / `npx react-native doctor`.
+    - Clean and reinstall:
+      rm -rf node_modules && npm install
+      flutter clean && flutter pub get
+      cd android && ./gradlew clean && cd ..
+
+Replace <REPO_URL>, my-mobile-app, and project-specific names with values for this repository.
